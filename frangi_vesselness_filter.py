@@ -24,7 +24,9 @@ def eigvals2d(Dxx, Dxy, Dyy):
 
     return lambda1, lambda2
 
-def frangi_filter(image,sigmas=(1, 2, 4, 8),beta=0.5,c=0.01,black_ridges=True):
+def frangi_filter(image,sigmas=(1, 2, 4, 8),beta=0.5,c=0.02,black_ridges=True):
+    # Denoise
+    image = gaussian_filter(image, sigma=1)
     """Minimal Frangi vesselness filter (2D)."""
     image = image.astype(np.float64)
 
@@ -59,6 +61,8 @@ def frangi_filter(image,sigmas=(1, 2, 4, 8),beta=0.5,c=0.01,black_ridges=True):
         else:
             V[lambda2 > 0] = 0
 
+        V = V / (sigma**2)
+        V[V < 0.1 * V.max()] = 0
         vesselness = np.maximum(vesselness, V)
 
     vesselness = (vesselness - vesselness.min()) / (vesselness.max() - vesselness.min())

@@ -17,8 +17,14 @@ img = img[:, :, 1]
 img = img.astype(np.float64)
 img = (img - img.min()) / (img.max() - img.min())
 
+
 # Scratch implementation
 v1 = frangi_filter(img, sigmas=(1, 2, 4, 8))
+
+# Simple threshold for retina
+mask = img > 0.05   
+img_masked = img * mask
+v1 *= mask
 
 # skimage version
 v2 = sk_frangi(img, sigmas=[1, 2, 4, 8], black_ridges=True)
