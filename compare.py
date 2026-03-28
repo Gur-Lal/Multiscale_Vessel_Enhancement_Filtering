@@ -17,7 +17,6 @@ img = img[:, :, 1]
 img = img.astype(np.float64)
 img = (img - img.min()) / (img.max() - img.min())
 
-
 # Scratch implementation
 v1 = frangi_filter(img, sigmas=(1, 2, 4, 8))
 
