@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 # Load image
 img = imread("sample_data/01_test.tif")
 
-# Convert to float FIRST
+# Convert to float first
 img = img.astype(np.float64) / 255.0
 
 # Use green channel for retina
@@ -17,7 +17,7 @@ img = img[:, :, 1]
 img = img.astype(np.float64)
 img = (img - img.min()) / (img.max() - img.min())
 
-# Your implementation
+# Scratch implementation
 v1 = frangi_filter(img, sigmas=(1, 2, 4, 8))
 
 # skimage version
