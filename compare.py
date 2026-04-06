@@ -1,4 +1,3 @@
-from skimage.filters import frangi as sk_frangi
 from skimage.io import imread
 from frangi_vesselness_filter import *
 import matplotlib.pyplot as plt
@@ -16,16 +15,21 @@ img = (img - img.min()) / (img.max() - img.min())
 v1 = frangi_filter(img, sigmas=(1, 2, 4, 8))
 
 # Simple threshold for retina
-mask = img > 0.05   
+mask = img > 0.25 
 img_masked = img * mask
 v1 *= mask
 
-# skimage version
-v2 = sk_frangi(img, sigmas=[1, 2, 4, 8], black_ridges=True)
-
 # Compare
-plt.figure(figsize=(12, 4))
-plt.subplot(1, 3, 1); plt.title("Original"); plt.imshow(img, cmap='gray')
-plt.subplot(1, 3, 2); plt.title("Custom"); plt.imshow(v1, cmap='gray')
-plt.subplot(1, 3, 3); plt.title("skimage"); plt.imshow(v2, cmap='gray')
+# Plot Original Image
+plt.figure(figsize=(6, 6))
+plt.title("Original")
+plt.imshow(img, cmap='gray')
+plt.axis('off')  # Hide axis
+plt.show()
+
+# Plot Custom (Scratch Implementation)
+plt.figure(figsize=(6, 6))
+plt.title("Custom")
+plt.imshow(v1, cmap='gray')
+plt.axis('off')  # Hide axis
 plt.show()
