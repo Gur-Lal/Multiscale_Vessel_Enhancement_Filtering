@@ -1,20 +1,15 @@
 from skimage.filters import frangi as sk_frangi
 from skimage.io import imread
-from skimage.color import rgb2gray
 from frangi_vesselness_filter import *
 import matplotlib.pyplot as plt
 
-# Load image
-img = imread("sample_data/01_test.tif")
-
-# Convert to float first
-img = img.astype(np.float64) / 255.0
+# Load image and normalize 
+img = imread("sample_data/01_test.tif").astype(np.float64) / 255.0
 
 # Use green channel for retina
 img = img[:, :, 1]
 
 # Normalize
-img = img.astype(np.float64)
 img = (img - img.min()) / (img.max() - img.min())
 
 # Scratch implementation
