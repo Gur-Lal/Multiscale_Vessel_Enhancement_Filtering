@@ -28,7 +28,6 @@ def frangi_filter(image,sigmas=(1, 2, 4, 8),beta=0.5,c=0.02,black_ridges=True):
     """Minimal Frangi vesselness filter (2D)."""
     # Denoise
     image = gaussian_filter(image, sigma=1)
-    image = image.astype(np.float64)
     vesselness = np.zeros_like(image)
 
     for sigma in sigmas:
