@@ -24,6 +24,9 @@ v2 *= mask
 # Compare
 plt.figure(figsize=(12, 4))
 plt.subplot(1, 3, 1); plt.title("Original"); plt.imshow(img, cmap='gray')
+plt.axis('off')
 plt.subplot(1, 3, 2); plt.title("Custom"); plt.imshow(v1, cmap='gray')
+plt.axis('off')
 plt.subplot(1, 3, 3); plt.title("skimage"); plt.imshow(v2, cmap='gray')
+plt.axis('off')
 plt.show()
