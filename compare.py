@@ -4,7 +4,7 @@ from frangi_vesselness_filter import *
 import matplotlib.pyplot as plt
 
 # Load image and normalize 
-img = imread("sample_data/01_test.tif").astype(np.float64) / 255.0
+img = imread("sample_data/02_test.tif").astype(np.float64) / 255.0
 
 # Use green channel for retina
 img = img[:, :, 1]
