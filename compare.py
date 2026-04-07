@@ -9,9 +9,6 @@ img = imread("sample_data/02_test.tif").astype(np.float64) / 255.0
 # Use green channel for retina
 img = img[:, :, 1]
 
-# Normalize
-img = (img - img.min()) / (img.max() - img.min())
-
 # Scratch implementation
 v1 = frangi_filter(img, sigmas=(1, 2, 4, 8))
 
