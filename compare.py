@@ -4,7 +4,7 @@ from frangi_vesselness_filter import *
 import matplotlib.pyplot as plt
 
 # Load image and normalize 
-img = imread("sample_data/02_test.tif").astype(np.float64) / 255.0
+img = imread("sample_data/01_test.tif").astype(np.float64) / 255.0
 
 # Use green channel for retina
 img = img[:, :, 1]
@@ -22,23 +22,8 @@ v1 *= mask
 v2 *= mask
 
 # Compare
-# Plot Original Image
-plt.figure(figsize=(6, 6))
-plt.title("Original")
-plt.imshow(img, cmap='gray')
-plt.axis('off')  # Hide axis
-plt.show()
-
-# Plot Custom (Scratch Implementation)
-plt.figure(figsize=(6, 6))
-plt.title("Custom")
-plt.imshow(v1, cmap='gray')
-plt.axis('off')  # Hide axis
-plt.show()
-
-# Plot skimage Version 
-plt.figure(figsize=(6, 6))
-plt.title("skimage")
-plt.imshow(v2, cmap='gray')
-plt.axis('off')  # Hide axis
+plt.figure(figsize=(12, 4))
+plt.subplot(1, 3, 1); plt.title("Original"); plt.imshow(img, cmap='gray')
+plt.subplot(1, 3, 2); plt.title("Custom"); plt.imshow(v1, cmap='gray')
+plt.subplot(1, 3, 3); plt.title("skimage"); plt.imshow(v2, cmap='gray')
 plt.show()
